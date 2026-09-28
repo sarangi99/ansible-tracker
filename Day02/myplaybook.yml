@@ -37,20 +37,20 @@
       when: ansible_os_family == "Debian"
 
     - name: copy the dynamic file master to "RedHat" node
-        ansible.builtin.template:
+      ansible.builtin.template:
         src: dynamic.j2
         dest: /var/www/html/index.html
       when: ansible_os_family == "RedHat"
 
     - name: download a file from internet
-        ansible.builtin.get_url:
+      ansible.builtin.get_url:
            src: https://www.magnific.com/free-photos-vectors/devops
            dest: /home/maha/
            force_basic_auth: yes
       when: ansible_os_family == "Debian"
-      
+
     - name: download a file from internet
-        ansible.builtin.get_url:
+      ansible.builtin.get_url:
            src: https://www.magnific.com/free-photos-vectors/devops
            dest: /home/maha/
            force_basic_auth: yes
