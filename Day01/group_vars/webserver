@@ -1,4 +1,4 @@
 ---
 java_package: openjdk-21-jdk 
 apache2_package: apache2
-jenkins_package: 
+jenkins_package: https://get.jenkins.io/war-stable/2.528.1/jenkins.war

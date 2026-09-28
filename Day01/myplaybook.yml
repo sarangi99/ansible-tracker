@@ -16,4 +16,18 @@
         name: "{{apache2_package}}" 
         state: present
       when: ansible_os_family == "RedHat"
+
+    - name: install jenkins on debian
+      ansible.builtin.get_url:
+        url: "{{jenkins_package}}"
+        dest: /home/maha/jenkins/
+        mode: '0644'
+        force_basic_auth: yes
+        
+    - name: install jenkins on redhat
+      ansible.builtin.get_url:
+        url: "{{jenkins_package}}"
+        dest: /home/maha/jenkins/
+        mode: '0644'
+        force_basic_auth: yes
  
