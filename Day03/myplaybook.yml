@@ -1,0 +1,34 @@
+---
+- hosts: webserver
+  become: yes
+  gather_facts: yes
+
+  tasks:
+   - name: install apache2 on debian 
+     ansible.builtin.apt:
+       name: apache2
+       state: present
+     when: ansible_os_family == "Debian"
+     notify : restart_Apache2
+  
+   - name: Create a file 
+     ansible.builtin.file:
+       path: /home/maha/data.txt
+       state: touch
+       mode: '0644'
+     when: ansible_os_family == "Debian"
+     notify : restart_Apache2
+
+   - name: Create a directory 
+     ansible.builtin.file:
+        path: /home/maha/datafolder
+        state: directory
+        mode: '0644'
+     when: ansible_os_family == "Debian"
+     notify : restart_Apache2
+
+  handlers: 
+   - name: restart_Apache2 
+     service:
+        name: apache2
+        state: restarted 
