@@ -1,0 +1,20 @@
+---
+- hosts: webserver
+  become: yes
+  gether_facts : yes
+
+  tasks: 
+    - include_tasks: myfilehandeling.yml
+
+    - name: install apache2 on debian
+      ansible.builtin.apt:
+        name: "{{apache2_package}}" 
+        state: present
+      when: ansible_os_family == "Debian"
+
+    - name: install httpd on redhat
+      ansible.builtin.yum:
+        name: "{{apache2_package}}" 
+        state: present
+      when: ansible_os_family == "RedHat"
+ 

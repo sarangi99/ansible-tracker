@@ -1,0 +1,3 @@
+# addhoc commands for ansible 
+# ansible all -m setup -a "filter=ansible_os_family"
+# sudo grep -ri "PasswordAuthentication" /etc/ssh/sshd_config /etc/ssh/sshd_config.d/

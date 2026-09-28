@@ -1,0 +1,3 @@
+java_package: java-21-openjdk-devel
+apache2_package: httpd
+jenkins_package: 

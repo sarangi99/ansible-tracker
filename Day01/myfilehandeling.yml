@@ -1,0 +1,8 @@
+---
+- name : create a directory for jenkins installation 
+  ansible.builtin.file:
+    path: /home/maha/jenkins
+    state: directory
+    owner: maha 
+    group: maha
+    mode: '0755'
