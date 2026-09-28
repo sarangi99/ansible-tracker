@@ -1,7 +1,7 @@
 ---
 - hosts: webserver
   become: yes
-  gether_facts : yes
+  gather_facts:yes
 
   tasks: 
     - include_tasks: myfilehandeling.yml
