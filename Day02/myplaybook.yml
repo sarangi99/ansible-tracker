@@ -3,55 +3,54 @@
   become: yes
   gather_facts: yes
 
-  tasks: 
-    - name: create a file
+  tasks:
+
+    - name: Create a file on Debian
       ansible.builtin.file:
-         path: /home/maha/newfile.txt
-         state: touch
-         mode: '0644'
+        path: /home/maha/newfile.txt
+        state: touch
+        mode: '0644'
       when: ansible_os_family == "Debian"
-    
-    - name: create a file
+
+    - name: Create a file on RedHat
       ansible.builtin.file:
-         path: /home/maha/newfile.txt
-         state: touch
-         mode: '0644'
+        path: /home/maha/newfile.txt
+        state: touch
+        mode: '0644'
       when: ansible_os_family == "RedHat"
 
-    - name: copy the static file master to "Debian" debian node
+    - name: Copy the static file to Debian node
       ansible.builtin.copy:
         src: staticfile
         dest: /home/maha/
       when: ansible_os_family == "Debian"
 
-    - name: copy the static file master to "RedHat" node
-        ansible.builtin.copy:
+    - name: Copy the static file to RedHat node
+      ansible.builtin.copy:
         src: staticfile
         dest: /home/maha/
       when: ansible_os_family == "RedHat"
 
-    - name: copy the dynamic file master to "Debian" debian node
+    - name: Copy the dynamic file to Debian node
       ansible.builtin.template:
         src: dynamic.j2
         dest: /var/www/html/index.html
       when: ansible_os_family == "Debian"
 
-    - name: copy the dynamic file master to "RedHat" node
+    - name: Copy the dynamic file to RedHat node
       ansible.builtin.template:
         src: dynamic.j2
         dest: /var/www/html/index.html
       when: ansible_os_family == "RedHat"
 
-    - name: download a file from internet
+    - name: Download a file from internet on Debian
       ansible.builtin.get_url:
-           src: https://www.magnific.com/free-photos-vectors/devops
-           dest: /home/maha/
-           force_basic_auth: yes
+        url: https://www.magnific.com/free-photos-vectors/devops
+        dest: /home/maha/
       when: ansible_os_family == "Debian"
 
-    - name: download a file from internet
+    - name: Download a file from internet on RedHat
       ansible.builtin.get_url:
-           src: https://www.magnific.com/free-photos-vectors/devops
-           dest: /home/maha/
-           force_basic_auth: yes
+        url: https://www.magnific.com/free-photos-vectors/devops
+        dest: /home/maha/
       when: ansible_os_family == "RedHat"
