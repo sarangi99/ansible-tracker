@@ -24,6 +24,7 @@
         mode: '0644'
         force_basic_auth: yes
       when: ansible_os_family == "Debian"
+         
     - name: install jenkins on redhat
       ansible.builtin.get_url:
         url: "{{jenkins_package}}"
