@@ -27,5 +27,6 @@
 
 - name: copy a dynamic file
   template:
-    src: /template/dynamicfile.j2
+    src: dynamicfile.j2
     dest: /var/www/html/index.html
+    mode: '0644'
