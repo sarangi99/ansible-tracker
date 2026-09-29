@@ -9,7 +9,7 @@
 
 - name: copy a static file 
   copy:
-    src: template/staticfile.txt
+    src: templates/staticfile.txt
     dest: /home/maha/staticfile.txt
     mode: '0644'
 
