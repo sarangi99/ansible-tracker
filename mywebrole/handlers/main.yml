@@ -1,3 +1,8 @@
 #SPDX-License-Identifier: MIT-0
 ---
 # handlers file for mywebrole
+
+- name: restartapche2
+  service:
+     name: "{{apache2var}}"
+     state: restarted 
